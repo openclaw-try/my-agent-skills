@@ -1,4 +1,4 @@
-# AGENTS.md — 园丁盒个人 AI 技能仓库 (my-agent-skills)
+# AGENTS.md — 个人 AI 技能仓库 (my-agent-skills)
 
 ## 技能仓库定位
 这是 `openclaw-try` 组织的全局 AI 技能与规范中心仓库。本仓库定义了所有可供加载的 Agent 技能，以及自动同步、备份和自进化的规则。
