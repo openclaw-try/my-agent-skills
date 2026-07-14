@@ -33,8 +33,9 @@ This skill synchronizes the global AI skills directory with the latest community
 当用户提到“配置当前项目技能”、“安装项目技能”或“读取项目钥匙”时，请执行以下顾问式匹配流程：
 
 1. **读取项目钥匙**：
-   - 检查项目根目录下是否存在 `.agents/skills.json`。
-   - 读取并提取 `required_skills`（项目声明的必选技能列表）以及 `skills_repository`。
+   - 检查项目根目录下是否存在 `AGENTS.md`。
+   - 读取并提取其中的 `## AI 开发流钥匙` (或 `AI Skills Key`) 章节。
+   - 解析出技能库链接 `Skills Repo`（如 `git@github.com:openclaw-try/my-agent-skills.git`）和声明使用的技能列表 `Required Skills` 或 `声明技能`。
 
 2. **环境感知扫描**：
    - 扫描当前工作区的文件和配置，猜测技术栈：
