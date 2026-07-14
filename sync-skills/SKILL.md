@@ -53,3 +53,27 @@ When the user asks to "sync my personal skills" or "pull skills from my reposito
    ```
 3. **Acknowledge Completion**: Inform the user that their local skills are now up to date with their GitHub repository!
 
+## Interactive Selective Installation (Marketplace Selector)
+When the user asks to "selectively install skills", "choose skills to install" or "install skills from my repo/marketplace":
+1. **Announce Start**: Say "I am fetching the available skills list from your repository to let you choose which ones to install."
+2. **Clone Repo to Temp**:
+   Clone the repository to a temporary directory in the current workspace:
+   ```bash
+   git clone --depth 1 ssh://git@ssh.github.com/openclaw-try/my-agent-skills.git .git_skills_temp
+   ```
+3. **Scan Available Skills**:
+   Scan all folders inside `.git_skills_temp/` (excluding git files, docs, etc.) that contain a `SKILL.md` file. Parse each `SKILL.md`'s YAML frontmatter to extract the skill `name` and `description`.
+4. **Present Selector to User**:
+   Call the `ask_question` tool with a single question:
+   - `question`: "请选择您想要安装的技能 (Select the skills you want to install):"
+   - `is_multi_select`: `true`
+   - `options`: List each skill formatted as: `"[Skill Name] - [Description]"` (e.g. `"brainstorming - Use before any creative work to explore intent"`)
+5. **Install Selected Skills**:
+   Once the user submits their choices:
+   - For each selected skill, copy its folder from `.git_skills_temp/<skill_folder>` to `/Users/wangpengcheng/.gemini/config/skills/<skill_folder>`.
+6. **Clean Up**:
+   Delete the `.git_skills_temp` folder.
+7. **Acknowledge Completion**:
+   Report the list of successfully installed skills and explain how the user can trigger them.
+
+
