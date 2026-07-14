@@ -30,3 +30,26 @@ When this skill is triggered (e.g., when the user asks to "sync skills", "update
    ```
 5. **Acknowledge Completion**:
    Inform the user that the global skills have been successfully updated to the latest version of `obra/superpowers`!
+
+## Backing Up Personal Skills (Backup Workflow)
+When the user asks to "backup skills" or "push skills to my repository/marketplace":
+1. **Announce Start**: Say "I am backing up your custom skills to your GitHub repository (openclaw-try/my-agent-skills)."
+2. **Commit and Push**:
+   Run the following commands:
+   ```bash
+   git -C /Users/wangpengcheng/.gemini/config/skills add .
+   git -C /Users/wangpengcheng/.gemini/config/skills commit -m "update: sync custom skills"
+   git -C /Users/wangpengcheng/.gemini/config/skills push origin main
+   ```
+3. **Acknowledge Completion**: Inform the user that the local skills have been successfully backed up to GitHub!
+
+## Restoring/Syncing Personal Skills (Pull Workflow)
+When the user asks to "sync my personal skills" or "pull skills from my repository":
+1. **Announce Start**: Say "I am pulling the latest skills from your personal repository (openclaw-try/my-agent-skills)."
+2. **Pull Updates**:
+   Run the following command:
+   ```bash
+   git -C /Users/wangpengcheng/.gemini/config/skills pull origin main
+   ```
+3. **Acknowledge Completion**: Inform the user that their local skills are now up to date with their GitHub repository!
+
